@@ -3,7 +3,7 @@ import { useHistory } from 'umi'
 
 export default function Nowplaying(props:any) {
   const history = useHistory()
-  console.log(history)  // 另一种方法获取路由跳转方法
+  // console.log(history)  // 另一种方法获取路由跳转方法
   const [list,setList] = useState([])
   useEffect(() => {
     fetch('https://m.maizuo.com/gateway?cityId=440300&pageNum=1&pageSize=10&type=1&k=5457311', {
@@ -12,7 +12,6 @@ export default function Nowplaying(props:any) {
         'X-Host': 'mall.film-ticket.film.list'
       }
     }).then(res => res.json()).then(res => {
-      console.log(res)
       setList(res.data.films)
     })
   }, [])
