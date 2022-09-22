@@ -9,7 +9,7 @@ export default function Login() {
   useEffect(() => {
     fetch('/users').then(res=>res.json())
     .then(res=> {
-      console.log(res)
+      // console.log(res)
     })
   }, [])
   return (

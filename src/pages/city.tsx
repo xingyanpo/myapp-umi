@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { IndexBar, List } from 'antd-mobile'
+import { connect } from 'umi'
 
-export default function City() {
+function City(props:any) {
+  const changeCity = (item:any)=>{
+    props.dispatch({
+      type: 'city/changeCity',
+      payload: {
+        cityName: item.name,
+        cityId: item.cityId
+      }
+    })
+    props.history.goBack()
+  }
   const [city, setCity] = useState([])
   const filterCity: any = (cities: any) => {
     // console.log(cities)
@@ -45,7 +56,7 @@ export default function City() {
             >
               <List>
                 {items.map((item: any, index: number) => (
-                  <List.Item key={index}>{item.name}</List.Item>
+                  <List.Item key={index} onClick={()=> changeCity(item)}>{item.name}</List.Item>
                 ))}
               </List>
             </IndexBar.Panel>
@@ -55,3 +66,5 @@ export default function City() {
     </div>
   )
 }
+
+export default connect()(City) 

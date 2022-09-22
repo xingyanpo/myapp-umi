@@ -18,7 +18,7 @@ export default function Nowplaying(props:any) {
   return (
     <div>
       {
-        list.map((item:any)=>
+        list.map((item:any)=> 
         <li key={item.filmId} onClick={() => {
           props.history.push(`/detail/${item.filmId}`)
         }}>{item.name}</li>
